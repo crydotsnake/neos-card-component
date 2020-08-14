@@ -1,0 +1,41 @@
+.card {
+    text-align: center;
+    margin: 3%;
+}
+
+.button {
+    background-color: #4caf50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4%;
+    margin-top: 1px;
+}
+
+.content{
+    margin: 4%;
+    text-align: center;
+}
+
+.c-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @screen lg {
+        flex-direction: row;
+    }
+}
+
+.o-grid__item--3 {
+    width: 100%;
+
+    @screen lg {
+        width: 33.337%;
+    }
+}

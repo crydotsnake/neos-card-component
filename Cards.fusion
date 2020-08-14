@@ -1,0 +1,13 @@
+prototype(YOUR.SITEPACKAGE:Card) < prototype(Neos.Neos:Content) {
+    
+    templatePath = 'resource://YOUR.SITEPACKAGE/Private/Templates/NodeTypes/Cards.html'
+
+    link = ${q(node).property('link')}
+    link.@process.convertUris = Neos.Neos:ConvertUris
+
+    linkTarget = '_blank'
+    linkTarget.@if.external = ${String.indexOf(q(node).property('link'), 'node://') == -1}
+
+    @process.wrapTeaser = ${'<div class="o-grid__item--3">' + value + '</div>'}
+
+}

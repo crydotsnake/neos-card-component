@@ -1,0 +1,59 @@
+{namespace media=Neos\Media\ViewHelpers}
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace vh=Newland\NeosViewHelpers\ViewHelpers}
+
+<div class="card content-center max-w-sm rounded overflow-hidden shadow-lg">
+<f:if condition="{neos:rendering.inBackend()}">
+    <f:then>
+        <img src="{neos.media:uri.image(image: image, maximumWidth: 640)}"
+             alt="{image.title}"
+             class="c-grid-teaser__image" />
+        {neos:contentElement.editable(property: 'title', class: 'font-semibold text-xl mb-2', tag: 'h4')}
+        {neos:contentElement.editable(property: 'text',  class: 'font-normal text-gray-700 text-base content', tag: 'p')}
+
+        <f:if condition="{link}">
+            <a
+                class="button"
+                {f:if(condition: openLinkInNewWindow, then: 'target="_blank" rel="noopener noreferrer"')}>
+
+                {node.properties.linkTitle}
+            </a>
+        </f:if>
+   
+    </f:then>
+    <f:else>
+        <img src="{neos.media:uri.image(image: image, maximumWidth: 640)}"
+             alt="{image.title}"
+             class="c-grid-teaser__image" 
+             />
+        {neos:contentElement.editable(property: 'title', class: 'font-semibold text-xl mb-2', tag: 'h4')}
+        {neos:contentElement.editable(property: 'text',  class: 'font-normal text-gray-700 text-base content', tag: 'p')}
+       
+        <f:if condition="{link}">
+                <a
+                    class="button"
+                    href="{link}"
+                    {f:if(condition: openLinkInNewWindow, then: 'target="_blank" rel="noopener noreferrer"')}>
+
+                    {node.properties.linkTitle}
+                </a>
+            </f:if>
+    
+    </f:else>
+</f:if>
+</div>
+<f:section name="gridTeaserContent">
+    <f:if condition="{image}">
+        <noscript>
+            <img src="{neos.media:uri.image(image: image, maximumWidth: 640)}"
+                 alt="{image.title}"
+                 class="c-grid-teaser__image"
+                 loading="lazy" />
+        </noscript>
+
+        <img data-src="{neos.media:uri.image(image: image, maximumWidth: 640)}"
+             alt="{image.title}"
+             class="c-grid-teaser__image lazyload" />
+
+    </f:if>
+    </f:section>

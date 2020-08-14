@@ -1,0 +1,61 @@
+'YOUR.SITEPACKAGE:Card':
+  superTypes:
+    'Neos.Neos:Content': true
+    'YOUR.SITEPACKAGE.NeosNodeTypes:LinkMixin': true
+    'YOUR.SITEPACKAGE.BaseTheme:SpacingMixin': false
+  ui:
+    label: Cards
+    icon: image
+    inspector:
+      groups:
+        image:
+          label: Image
+          icon: image
+        button:
+          label: Button
+          icon:  image  
+  
+  properties:
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Bild
+        reloadIfChanged: true
+        inspector:
+          group: image
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Title'
+    text:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: Enter your text here
+    button:
+      type: string
+      defaultValue: ''
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Enter title here...'
+            autoparagraph: false
+          inspector:
+            group: button
+    link:
+      type: string
+      ui:
+        label: Link
+        inspector:
+          group: button
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+      linkTitle:
+        inspector:
+          group: button
+        ui: ~
