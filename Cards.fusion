@@ -1,4 +1,4 @@
-prototype(Bare.PackageTest:Card) < prototype(Neos.Neos:Content) {
+prototype(PACKAGE.VENDORNAME:Card) < prototype(Neos.Neos:Content) {
     templatePath = 'resource://Bare.PackageTest/Private/Templates/NodeTypes/Cards.html'
     title = ${q(node).property('title')}
     text = ${q(node).property('text')}
