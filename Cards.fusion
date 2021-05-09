@@ -1,13 +1,12 @@
-prototype(YOUR.SITEPACKAGE:Card) < prototype(Neos.Neos:Content) {
-    
-    templatePath = 'resource://YOUR.SITEPACKAGE/Private/Templates/NodeTypes/Cards.html'
-
+prototype(Bare.PackageTest:Card) < prototype(Neos.Neos:Content) {
+    templatePath = 'resource://Bare.PackageTest/Private/Templates/NodeTypes/Cards.html'
+    title = ${q(node).property('title')}
+    text = ${q(node).property('text')}
+    image = ${q(node).property('image')}
     link = ${q(node).property('link')}
     link.@process.convertUris = Neos.Neos:ConvertUris
-
-    linkTarget = '_blank'
-    linkTarget.@if.external = ${String.indexOf(q(node).property('link'), 'node://') == -1}
-
+    linkTarget = ${String.indexOf(q(node).property('link'), 'node://') == -1 ? '_blank' : false}
+    // this should go into your fluid
     @process.wrapTeaser = ${'<div class="o-grid__item--3">' + value + '</div>'}
-
+    @process.contentElementWrapping = ContentElementWrapping
 }
